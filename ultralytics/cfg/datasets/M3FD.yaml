@@ -1,0 +1,12 @@
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train:  F:/M3FD/images/visible/train # 16551 images
+val:  F:/M3FD/images/visible/val # 4952 images
+
+# number of classes
+nc: 6
+
+# class names
+#names: ['People', 'Car', 'Lamp', 'Bus', 'Motorcycle', 'Truck']
+
+names: ['People', 'Car', 'Bus', 'Lamp', 'Motorcycle', 'Truck']

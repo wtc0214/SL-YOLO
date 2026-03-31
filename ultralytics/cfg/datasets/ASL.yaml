@@ -1,0 +1,13 @@
+train: F:/ASL Project.v16i.yolov5pytorch/train/images
+val: F:/ASL Project.v16i.yolov5pytorch/valid/images
+test: F:/ASL Project.v16i.yolov5pytorch/test/images
+
+nc: 26
+names: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+roboflow:
+  workspace: meredith-lo-pmqx7
+  project: asl-project
+  version: 16
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/meredith-lo-pmqx7/asl-project/dataset/16

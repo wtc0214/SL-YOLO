@@ -1,0 +1,13 @@
+train: F:/Expressions.v4i.yolov5pytorch/train/images
+val: F:/Expressions.v4i.yolov5pytorch/valid/images
+test: F:/Expressions.v4i.yolov5pytorch/test/images
+
+nc: 18
+names: ['I', 'apple', 'can', 'get', 'good', 'have', 'help', 'how', 'like', 'love', 'my', 'no', 'sorry', 'thank-you', 'want', 'yes', 'you', 'your']
+
+roboflow:
+  workspace: expression
+  project: expressions-tgbkg
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/expression/expressions-tgbkg/dataset/4

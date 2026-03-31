@@ -1,0 +1,13 @@
+train: F:/liver.v13i.yolov11/train/images
+val: F:/liver.v13i.yolov11/valid/images
+test: F:/liver.v13i.yolov11/test/images
+
+nc: 4
+names: ['ballooning', 'fibrosis', 'inflammation', 'steatosis']
+
+roboflow:
+  workspace: liver-try
+  project: liver-huuei
+  version: 13
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/liver-try/liver-huuei/dataset/13

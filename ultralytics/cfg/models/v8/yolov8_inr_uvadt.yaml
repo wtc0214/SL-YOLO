@@ -1,0 +1,49 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+# YOLOv8 with INR-Enhanced C2f for UVADT Dataset
+# Optimized for UAV-based vehicle detection and tracking
+# UVADT dataset focuses on vehicle detection from UAV perspective
+
+# Parameters
+nc: 3 # UVADT has 6 classes: car, truck, bus, van, motorcycle, bicycle
+scales: # model compound scaling constants
+  # [depth, width, max_channels]
+  #n: [0.33, 0.25, 1024] # YOLOv8n - lightweight
+  #s: [0.33, 0.50, 1024] # YOLOv8s - balanced
+  m: [0.67, 0.75, 768]  # YOLOv8m - recommended for UVADT
+  #l: [1.00, 1.00, 512]  # YOLOv8l - high accuracy
+  #x: [1.00, 1.25, 512]  # YOLOv8x - maximum accuracy
+ch: 3
+# YOLOv8 backbone with INR-Enhanced C2f optimized for UVADT
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]] # 0-P1/2
+  - [-1, 1, Conv, [128, 3, 2]] # 1-P2/4
+  - [-1, 3, INREnhancedC2f, [128, True, 1, 0.5, True, True, 112]] # 2 - Vehicle detection optimization
+  - [-1, 1, Conv, [256, 3, 2]] # 3-P3/8
+  - [-1, 6, INREnhancedC2f, [256, True, 1, 0.5, True, True, 144]] # 4 - Multi-scale vehicle features
+  - [-1, 1, Conv, [512, 3, 2]] # 5-P4/16
+  - [-1, 6, INREnhancedC2f, [512, True, 1, 0.5, True, True, 176]] # 6 - Large vehicle detection
+  - [-1, 1, Conv, [1024, 3, 2]] # 7-P5/32
+  - [-1, 3, INREnhancedC2f, [1024, True, 1, 0.5, True, True, 208]] # 8 - High-level vehicle features
+  - [-1, 1, SPPF, [1024, 5]] # 9
+
+# YOLOv8 head with INR-Enhanced C2f optimized for UVADT
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 6], 1, Concat, [1]] # cat backbone P4
+  - [-1, 2, INREnhancedC2f, [512, 1, False, 1, 0.5, True, True, 176]] # 12 - P4/16-medium
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]] # cat backbone P3
+  - [-1, 2, INREnhancedC2f, [256, 1, False, 1, 0.5, True, True, 144]] # 15 (P3/8-small) - Small vehicles
+
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 12], 1, Concat, [1]] # cat head P4
+  - [-1, 2, INREnhancedC2f, [512, 1, False, 1, 0.5, True, True, 176]] # 18 (P4/16-medium)
+
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [[-1, 9], 1, Concat, [1]] # cat head P5
+  - [-1, 2, INREnhancedC2f, [1024, 1, False, 1, 0.5, True, True, 208]] # 21 (P5/32-large)
+
+  - [[15, 18, 21], 1, Detect, [nc]] # Detect(P3, P4, P5)

@@ -1,0 +1,5 @@
+train: F:/VisDrone/yolo_format/VisDrone2019-DET-train/images
+val: F:/VisDrone/yolo_format/VisDrone2019-DET-val/images
+test : F:/VisDrone/yolo_format/VisDrone2019-DET-test-dev/images
+nc: 10  # 只训练前景类别，类别编号 0～19
+names: ['pedestrian', 'people', 'bicycle', 'car', 'van','truck', 'tricycle', 'awning-tricycle','bus','motor']

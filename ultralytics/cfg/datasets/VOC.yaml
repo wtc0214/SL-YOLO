@@ -1,0 +1,5 @@
+# YOLOv5 detection dataset
+train: F:/VOC_YOLO_Detection/train/images
+val: F:/VOC_YOLO_Detection/val/images
+nc: 20
+names: ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car', 'cat', 'chair', 'cow', 'diningtable', 'dog', 'horse', 'motorbike', 'person', 'pottedplant', 'sheep', 'sofa', 'train', 'tvmonitor']

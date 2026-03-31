@@ -1,0 +1,13 @@
+train: F:/Kidney disease.v3i.yolov11/train/images
+val: F:/Kidney disease.v3i.yolov11/valid/images
+test: F:/Kidney disease.v3i.yolov11/test/images
+
+nc: 3
+names: ['normal', 'stone', 'tumor']
+
+roboflow:
+  workspace: kidney-disease-7tmoy
+  project: kidney-disease-gd4is
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/kidney-disease-7tmoy/kidney-disease-gd4is/dataset/3
