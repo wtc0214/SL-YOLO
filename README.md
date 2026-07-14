@@ -1,7 +1,7 @@
-# SL-YOLO: An Efficient Real-Time Hand Gesture Detection Network Using Structured Convolution and Re-parameterized Large Kernels
+# SLNet: An Efficient Real-Time Hand Gesture Detection Network Using Structured Convolution and Re-parameterized Large Kernels
 
 ## Model Architecture
-SL-YOLO is built on YOLOv8 with the following improvements:
+SLNet is built on YOLOv8 with the following improvements:
 - Lightweight backbone optimization
 -Efficient convolution via DSConv
 -Large kernel modeling via C2RepLK
