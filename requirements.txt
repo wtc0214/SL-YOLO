@@ -26,7 +26,7 @@ efficientnet-pytorch>=0.7.1
 # comet
 
 # Plotting ------------------------------------
-pandas>=1.1.4
+pandas>=2.3.3
 seaborn>=0.11.0
 
 # Export --------------------------------------
